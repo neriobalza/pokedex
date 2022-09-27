@@ -1,19 +1,17 @@
-import { StyleSheet, Text, SafeAreaView, StatusBar } from "react-native";
 import React from "react";
+import { SafeAreaView, StatusBar } from "react-native";
+import PokemonList from "../components/PokemonList";
+import usePokedex from "../hooks/usePokedex";
 
 const Pokedex = () => {
+  const pokedex = usePokedex();
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView>
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-      <Text>Pokedex</Text>
+      <PokemonList pokemons={pokedex.pokemons} />
     </SafeAreaView>
   );
 };
 
 export default Pokedex;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
