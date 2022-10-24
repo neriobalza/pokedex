@@ -13,12 +13,22 @@ const getPokemons = async (url) => {
 
 const getPokemonInfoByUrl = async (url) => {
   try {
-    const responde = await fetch(url);
-    const result = await responde.json();
+    const response = await fetch(url);
+    const result = await response.json();
     return result;
   } catch (error) {
     throw error;
   }
 };
 
-export { getPokemons, getPokemonInfoByUrl };
+const getPokemonById = async (id) => {
+  try {
+    const response = await fetch(`${API_HOST}pokemon/${id}`);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { getPokemons, getPokemonInfoByUrl, getPokemonById };

@@ -11,10 +11,12 @@ const usePokedex = () => {
     loadPokemons();
   }, []);
 
-  const loadPokemons = async () => {
+  const loadPokemons = async (url) => {
+    if (loading) return;
     try {
+      setLoading(true);
       let pokemonsList = [];
-      const response = await getPokemons();
+      const response = await getPokemons(url);
 
       for await (const poke of response.results) {
         const pokemonDetails = await getPokemonInfoByUrl(poke.url);
@@ -27,15 +29,22 @@ const usePokedex = () => {
           image: pokemonDetails.sprites.other["official-artwork"].front_default,
         });
       }
+      setNextPage(response.next);
       setPokemons([...pokemons, ...pokemonsList]);
+      setLoading(false);
     } catch (error) {
       setError(error);
+      setLoading(false);
     }
   };
 
-  const loadMorePokemons = async () => {};
+  const loadMorePokemons = async () => {
+    if (nextPage) {
+      loadPokemons(nextPage);
+    }
+  };
 
-  return { pokemons, loading, error, loadMorePokemons };
+  return { pokemons, nextPage, error, loadMorePokemons };
 };
 
 export default usePokedex;

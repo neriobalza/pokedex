@@ -9,13 +9,17 @@ const Stack = createBottomTabNavigator();
 
 const TabNavigation = () => {
   return (
-    <Stack.Navigator initialRouteName="PokedexNavigation">
+    <Stack.Navigator
+      initialRouteName="PokedexNavigation"
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen
         name="PokedexNavigation"
         component={PokedexNavigation}
         options={{
           tabBarLabel: "Pokedex",
-          headerShown: false,
           tabBarIcon: () => <PokeballIcon />,
         }}
       />
@@ -24,7 +28,6 @@ const TabNavigation = () => {
         component={FavoritesNavigation}
         options={{
           tabBarLabel: "Favorites",
-          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Icon name="star" color={color} size={size} />
           ),
