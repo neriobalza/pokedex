@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import PokedexNavigation from "./PokedexNavigation";
 import FavoritesNavigation from "./FavoritesNavigation";
-import PokeballIcon from "../components/PokeballIcon";
+// import PokeballIcon from "../components/PokeballIcon";
 
 const Stack = createBottomTabNavigator();
 
