@@ -7,11 +7,12 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import getPokemonColor from "../../utils/getPokemonColor";
-import pokeball from "../../assets/pokeball-white.png";
+import getPokemonColor from "@utils/getPokemonColor";
+import pokeball from "@assets/pokeball-white.png";
 
-const Card = (props) => {
+const PokemonCard = (props) => {
   const { pokemon } = props;
+
   const navigation = useNavigation();
   const bgColor = getPokemonColor(pokemon.type);
   const bgStyles = {
@@ -86,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Card;
+export default PokemonCard;

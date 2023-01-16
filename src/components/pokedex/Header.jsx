@@ -1,22 +1,50 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableWithoutFeedback,
+  Image,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import icon from "@assets/teamPokeball.png";
 
 const Header = () => {
+  const navigation = useNavigation();
+
+  const goToTeam = () => {
+    navigation.navigate("Team");
+  };
+
   return (
     <View style={styles.conainer}>
       <Text style={styles.title}>Pokedex</Text>
+
+      <TouchableWithoutFeedback onPress={goToTeam}>
+        <Image source={icon} style={styles.image} />
+      </TouchableWithoutFeedback>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   conainer: {
-    paddingHorizontal: 5,
-    paddingTop: 10,
+    // backgroundColor: "rgba(239,239,239, .5)",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    margin: 5,
   },
   title: {
     fontSize: 40,
     fontWeight: "bold",
+    color: "#161616",
+  },
+
+  image: {
+    width: 40,
+    height: 40,
   },
 });
 

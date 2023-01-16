@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, View, Image } from "react-native";
-import pokeball from "../../assets/pokeball-transparent.png";
+import { StyleSheet, Image } from "react-native";
+import pokeball from "@assets/pokeball-transparent.png";
 
-const PokeballBG = () => {
+const Pokeball = () => {
   return <Image source={pokeball} style={styles.pokeball} />;
 };
 
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PokeballBG;
+export default Pokeball;

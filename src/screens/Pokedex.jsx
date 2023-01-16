@@ -1,8 +1,7 @@
 import React from "react";
 import { SafeAreaView, StatusBar } from "react-native";
-import usePokedex from "../hooks/usePokedex";
-import List from "../components/pokedex/List";
-import PokeballBG from "../components/pokedex/PokeballBG";
+import { Pokeball, PokemonList } from "@components/pokedex";
+import usePokedex from "@hooks/usePokedex";
 
 const Pokedex = () => {
   const pokedex = usePokedex();
@@ -10,8 +9,10 @@ const Pokedex = () => {
   return (
     <SafeAreaView>
       <StatusBar backgroundColor="#efefef" barStyle="dark-content" />
-      <PokeballBG />
-      <List
+
+      <Pokeball />
+
+      <PokemonList
         pokemons={pokedex.pokemons}
         loadMore={pokedex.loadMorePokemons}
         loading={pokedex.nextPage}

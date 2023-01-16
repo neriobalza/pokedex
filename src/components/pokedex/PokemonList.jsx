@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, FlatList } from "react-native";
+import { Spinner } from "@components";
 import Header from "./Header";
-import Spinner from "../Spinner";
-import Card from "./Card";
+import PokemonCard from "./PokemonCard";
 
-const List = (props) => {
+const PokemonList = (props) => {
   const { pokemons, loadMore, loading } = props;
 
   return (
@@ -12,22 +12,22 @@ const List = (props) => {
       data={pokemons}
       numColumns={2}
       showsVerticalScrollIndicator={true}
-      renderItem={({ item }) => <Card pokemon={item} />}
+      renderItem={({ item }) => <PokemonCard pokemon={item} />}
       keyExtractor={(item) => String(item.id)}
-      contentContainerStyle={styles.pokedexList}
+      contentContainerStyle={styles.container}
       onEndReached={loadMore}
       onEndReachedThreshold={0.2}
       ListHeaderComponent={<Header />}
       ListFooterComponent={loading && <Spinner />}
-      // stickyHeaderIndices={[0]}
+      stickyHeaderIndices={[0]}
     />
   );
 };
 
 const styles = StyleSheet.create({
-  pokedexList: {
+  container: {
     padding: 5,
   },
 });
 
-export default List;
+export default PokemonList;
