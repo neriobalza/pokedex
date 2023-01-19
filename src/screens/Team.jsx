@@ -1,14 +1,17 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StatusBar, SafeAreaView, View, Text } from "react-native";
 
 const Team = () => {
   return (
-    <View>
-      <Text>Team</Text>
-    </View>
+    <SafeAreaView>
+      <StatusBar backgroundColor="#efefef" barStyle="dark-content" />
+
+      <View>
+        <Text>Poke Team</Text>
+        <ScrollView></ScrollView>
+      </View>
+    </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default Team;

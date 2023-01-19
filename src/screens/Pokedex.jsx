@@ -1,6 +1,7 @@
 import React from "react";
 import { SafeAreaView, StatusBar } from "react-native";
-import { Pokeball, PokemonList } from "@components/pokedex";
+import { Pokeball } from "@components";
+import { PokemonList } from "@components/pokedex";
 import usePokedex from "@hooks/usePokedex";
 
 const Pokedex = () => {

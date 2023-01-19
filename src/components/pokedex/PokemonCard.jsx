@@ -6,44 +6,44 @@ import {
   Image,
   TouchableWithoutFeedback,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import getPokemonColor from "@utils/getPokemonColor";
 import pokeball from "@assets/pokeball-white.png";
 
-const PokemonCard = (props) => {
-  const { pokemon } = props;
+class PokemonCard extends React.PureComponent {
+  render() {
+    const { pokemon, navigation } = this.props;
 
-  const navigation = useNavigation();
-  const bgColor = getPokemonColor(pokemon.type);
-  const bgStyles = {
-    backgroundColor: bgColor,
-    ...styles.background,
-  };
+    const bgColor = getPokemonColor(pokemon.type);
+    const bgStyles = {
+      backgroundColor: bgColor,
+      ...styles.background,
+    };
 
-  const goToPokemon = () => {
-    navigation.navigate("Pokemon", {
-      id: pokemon.id,
-      name: pokemon.name,
-      background: bgColor,
-      image: pokemon.image,
-    });
-  };
+    const goToPokemon = () => {
+      navigation.navigate("Pokemon", {
+        id: pokemon.id,
+        name: pokemon.name,
+        background: bgColor,
+        image: pokemon.image,
+      });
+    };
 
-  return (
-    <TouchableWithoutFeedback onPress={goToPokemon}>
-      <View style={styles.pokemonCard}>
-        <View style={styles.container}>
-          <View style={bgStyles}>
-            <Text style={styles.name}>{pokemon.name}</Text>
-            <Text style={styles.id}>#{`${pokemon.id}`.padStart(3, 0)}</Text>
-            <Image source={pokeball} style={styles.pokeball} />
-            <Image source={{ uri: pokemon.image }} style={styles.image} />
+    return (
+      <TouchableWithoutFeedback onPress={goToPokemon}>
+        <View style={styles.pokemonCard}>
+          <View style={styles.container}>
+            <View style={bgStyles}>
+              <Text style={styles.name}>{pokemon.name}</Text>
+              <Text style={styles.id}>#{`${pokemon.id}`.padStart(3, 0)}</Text>
+              <Image source={pokeball} style={styles.pokeball} />
+              <Image source={{ uri: pokemon.image }} style={styles.image} />
+            </View>
           </View>
         </View>
-      </View>
-    </TouchableWithoutFeedback>
-  );
-};
+      </TouchableWithoutFeedback>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   pokemonCard: {

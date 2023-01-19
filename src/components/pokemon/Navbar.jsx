@@ -17,6 +17,7 @@ const Navbar = (props) => {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+    paddingHorizontal: 20,
   },
   button: {
     width: 45,
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 22.5,
-    backgroundColor: "rgba(0,0,0, 0.1)",
+    backgroundColor: "rgba(0,0,0, 0.15)",
   },
 });
 

@@ -1,8 +1,7 @@
 import React from "react";
 import { ScrollView, StatusBar, SafeAreaView, View } from "react-native";
-import usePokemon from "../hooks/usePokemon";
-import Header from "../components/pokemon/Header";
-import DataContainer from "../components/pokemon/DataContainer";
+import usePokemon from "@hooks/usePokemon";
+import { Hero, Data } from "@components/pokemon";
 
 const Pokemon = (props) => {
   const { navigation } = props;
@@ -19,9 +18,8 @@ const Pokemon = (props) => {
 
       <View style={backgroundStyles}>
         <ScrollView>
-          <Header name={name} id={id} image={image} navigation={navigation} />
-
-          <DataContainer
+          <Hero name={name} id={id} image={image} navigation={navigation} />
+          <Data
             pokemon={pokemon.pokemon}
             loading={pokemon.loading}
             error={pokemon.error}
