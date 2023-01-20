@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getPokemons, getPokemonInfoByUrl } from "../api/fetchPokemons";
+import { getPokemons, getPokemonInfoByUrl } from "@utils/fetchPokemons";
 
 const usePokedex = () => {
   const [pokemons, setPokemons] = useState([]);

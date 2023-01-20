@@ -1,7 +1,6 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { PokedexNavigation } from "@navigation";
-import { Login } from "@screens";
 import { useFonts } from "expo-font";
 
 const App = () => {
@@ -17,8 +16,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      {/* <PokedexNavigation /> */}
-      <Login />
+      <PokedexNavigation />
     </NavigationContainer>
   );
 };

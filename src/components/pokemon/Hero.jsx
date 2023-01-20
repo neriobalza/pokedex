@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import Navbar from "./Navbar";
-import Pokeball from "@assets/pokeball-white.png";
+import Pokeball from "@assets/images/pokeball-white.png";
 
 const Hero = (props) => {
   const { name, image, id, navigation } = props;

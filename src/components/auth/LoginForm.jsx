@@ -5,7 +5,6 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  Keyboard,
 } from "react-native";
 import { useFormik } from "formik";
 import * as Yup from "yup";

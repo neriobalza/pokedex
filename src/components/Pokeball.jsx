@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Image } from "react-native";
-import pokeball from "@assets/pokeball-transparent.png";
+import pokeball from "@assets/images/pokeball-transparent.png";
 
 const Pokeball = () => {
   return <Image source={pokeball} style={styles.pokeball} />;

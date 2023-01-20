@@ -7,7 +7,7 @@ import {
   Image,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import icon from "@assets/teamPokeball.png";
+import icon from "@assets/images/pokeball.png";
 
 const Header = () => {
   const navigation = useNavigation();

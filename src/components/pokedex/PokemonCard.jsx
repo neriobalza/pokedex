@@ -7,7 +7,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import getPokemonColor from "@utils/getPokemonColor";
-import pokeball from "@assets/pokeball-white.png";
+import pokeball from "@assets/images/pokeball-white.png";
 
 class PokemonCard extends React.PureComponent {
   render() {

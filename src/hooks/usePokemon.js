@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getPokemonById } from "../api/fetchPokemons";
+import { getPokemonById } from "@utils/fetchPokemons";
 
 const usePokemon = (id, navigation) => {
   const [pokemon, setPokemon] = useState(null);
