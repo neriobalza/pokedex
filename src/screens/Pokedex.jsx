@@ -1,6 +1,5 @@
 import React from "react";
-import { SafeAreaView, StatusBar } from "react-native";
-import { Pokeball } from "@components";
+import { Screen } from "@components";
 import { PokemonList } from "@components/pokedex";
 import usePokedex from "@hooks/usePokedex";
 
@@ -8,17 +7,13 @@ const Pokedex = () => {
   const pokedex = usePokedex();
 
   return (
-    <SafeAreaView>
-      <StatusBar backgroundColor="#efefef" barStyle="dark-content" />
-
-      <Pokeball />
-
+    <Screen>
       <PokemonList
         pokemons={pokedex.pokemons}
         loadMore={pokedex.loadMorePokemons}
         loading={pokedex.nextPage}
       />
-    </SafeAreaView>
+    </Screen>
   );
 };
 

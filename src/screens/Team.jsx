@@ -1,17 +1,30 @@
 import React from "react";
-import { ScrollView, StatusBar, SafeAreaView, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Screen, Navbar } from "@components";
 
-const Team = () => {
+const Team = (props) => {
+  const { navigation } = props;
+
   return (
-    <SafeAreaView>
-      <StatusBar backgroundColor="#efefef" barStyle="dark-content" />
-
-      <View>
-        <Text>Poke Team</Text>
-        <ScrollView></ScrollView>
+    <Screen>
+      <View style={styles.wrapper}>
+        <Navbar
+          navigation={navigation}
+          title="Team"
+          icon="person-circle-outline"
+          navigateTo="Account"
+        />
       </View>
-    </SafeAreaView>
+    </Screen>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {},
+  title: {
+    fontSize: 40,
+    fontFamily: "SofiaMedium",
+  },
+});
 
 export default Team;

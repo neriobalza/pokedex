@@ -1,7 +1,8 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { PokedexNavigation } from "@navigation";
 import { useFonts } from "expo-font";
+import { AppNavigation } from "@navigation";
+import { AuthProvider } from "@context/AuthContext";
 
 const App = () => {
   const [fonstLoaded] = useFonts({
@@ -16,7 +17,9 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <PokedexNavigation />
+      <AuthProvider>
+        <AppNavigation />
+      </AuthProvider>
     </NavigationContainer>
   );
 };

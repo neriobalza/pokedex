@@ -1,14 +1,26 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { Screen, Navbar } from "@components";
+import { LoginForm } from "@components/auth";
+import useAuth from "@hooks/useAuth";
 
-const Account = () => {
+const Account = (props) => {
+  const { navigation } = props;
+  const { user } = useAuth();
+
   return (
-    <View>
-      <Text>Account</Text>
-    </View>
+    <Screen>
+      <View style={styles.container}>
+        <Navbar navigation={navigation} title="Account" />
+
+        {user ? <></> : <LoginForm />}
+      </View>
+    </Screen>
   );
 };
 
-export default Account;
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+});
 
-const styles = StyleSheet.create({});
+export default Account;

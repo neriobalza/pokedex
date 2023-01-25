@@ -1,10 +1,10 @@
 export const user = {
-  userName: "Pedro Perro",
+  userName: "perroPedro",
   password: "1234perro",
 };
 
 export const userDetails = {
-  userName: "Pedro Perro",
+  userName: "perroPedro",
   firstName: "Pedro",
   lastName: "Perro",
   email: "pedroperro@gmail.com",

@@ -1,2 +1,1 @@
-export { default as PokedexNavigation } from "./PokedexNavigation";
-export { default as TabNavigation } from "./TabNavigation";
+export { default as AppNavigation } from "./AppNavigation";

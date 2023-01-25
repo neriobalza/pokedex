@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,16 +8,33 @@ import {
 } from "react-native";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import useAuth from "@hooks/useAuth";
+import { user, userDetails } from "@database/userDB";
 
 const LoginForm = () => {
+  const [error, setError] = useState(null);
+  const auth = useAuth();
+
   const formik = useFormik({
     initialValues: initialValues(),
     onSubmit: (values) => {
-      console.log(values);
+      validateLogin(values);
     },
     validationSchema: Yup.object(validationSchema()),
     validateOnChange: false,
   });
+
+  const validateLogin = (values) => {
+    const { email, password } = values;
+
+    if (email !== user.email || password !== user.password) {
+      setError({
+        message: "The user name or the password is incorrect.",
+      });
+    } else {
+      auth.login(userDetails);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -54,6 +71,7 @@ const LoginForm = () => {
           {formik.errors.password && (
             <Text style={styles.error}>{formik.errors.password}</Text>
           )}
+          {error && <Text style={styles.error}>{error.message}</Text>}
         </View>
       </View>
     </View>
@@ -83,7 +101,7 @@ const styles = StyleSheet.create({
   title: {
     textAlign: "center",
     fontSize: 40,
-    marginBottom: 20,
+    marginBottom: 10,
     fontFamily: "SofiaBold",
   },
 
