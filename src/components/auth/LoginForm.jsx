@@ -13,7 +13,7 @@ import { user, userDetails } from "@database/userDB";
 
 const LoginForm = () => {
   const [error, setError] = useState(null);
-  const auth = useAuth();
+  const { login } = useAuth();
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -32,7 +32,7 @@ const LoginForm = () => {
         message: "The user name or the password is incorrect.",
       });
     } else {
-      auth.login(userDetails);
+      login(userDetails);
     }
   };
 
