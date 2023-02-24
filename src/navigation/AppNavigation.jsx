@@ -13,7 +13,9 @@ const Stack = createNativeStackNavigator();
 
 const AppNavigation = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      screenOptions={{ headerShown: false, animation: "fade_from_bottom" }}
+    >
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Password" component={ForgotPassword} />
       <Stack.Screen name="Pokedex" component={Pokedex} />

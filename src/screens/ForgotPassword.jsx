@@ -5,7 +5,7 @@ import { Title, Text, Button, Input, Screen, Navbar } from "@components";
 const ForgotPassword = () => {
   return (
     <Screen>
-      <Navbar />
+      <Navbar title="Reset" />
 
       <View style={styles.container}>
         <View style={styles.form}>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
   form: {
     paddingHorizontal: 20,
-    marginBottom: 55,
+    marginBottom: 60,
   },
 });
 
