@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { AppNavigation } from "@navigation";
-import { AuthProvider } from "@context/AuthContext";
+import { AuthProvider, ThemeProvider } from "@context";
 
 const App = () => {
   const [fonstLoaded] = useFonts({
@@ -17,9 +17,11 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <AuthProvider>
-        <AppNavigation />
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <AppNavigation />
+        </AuthProvider>
+      </ThemeProvider>
     </NavigationContainer>
   );
 };

@@ -6,7 +6,7 @@ export const AuthContext = createContext({
   logout: () => {},
 });
 
-export function AuthProvider(props) {
+export const AuthProvider = (props) => {
   const { children } = props;
   const [auth, setAuth] = useState(undefined);
 
@@ -29,4 +29,4 @@ export function AuthProvider(props) {
       <>{children}</>
     </AuthContext.Provider>
   );
-}
+};

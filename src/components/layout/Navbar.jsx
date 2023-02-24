@@ -1,9 +1,11 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
 
 const Navbar = (props) => {
-  const { navigation, title, icon, navigateTo } = props;
+  const { title, icon, navigateTo } = props;
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>

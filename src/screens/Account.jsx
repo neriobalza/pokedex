@@ -1,8 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Screen, Navbar } from "@components";
-import { LoginForm } from "@components/auth";
-import { UserData } from "@components/user";
 import useAuth from "@hooks/useAuth";
 
 const Account = (props) => {
@@ -13,8 +11,6 @@ const Account = (props) => {
     <Screen>
       <View style={styles.container}>
         <Navbar navigation={navigation} title="Account" />
-
-        {user ? <UserData /> : <LoginForm />}
       </View>
     </Screen>
   );
