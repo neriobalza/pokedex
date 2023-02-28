@@ -13,7 +13,11 @@ const IconButton = (props) => {
   };
 
   return (
-    <TouchableOpacity onPress={onPress} style={buttonStyles}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={buttonStyles}
+      activeOpacity={0.75}
+    >
       <Icon name={icon} size={35} color={color} />
     </TouchableOpacity>
   );

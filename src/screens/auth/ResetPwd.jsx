@@ -2,10 +2,10 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Title, Text, Button, Input, Screen, Navbar } from "@components";
 
-const ForgotPassword = () => {
+const ResetPwd = () => {
   return (
     <Screen>
-      <Navbar title="Reset" />
+      <Navbar />
 
       <View style={styles.container}>
         <View style={styles.form}>
@@ -16,7 +16,7 @@ const ForgotPassword = () => {
             with instruccions to reset your password.
           </Text>
 
-          <Input label="Email address:" placeholder="Your email.." />
+          <Input label="Email:" placeholder="Your email.." />
 
           <Button title="Submit" />
         </View>
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ForgotPassword;
+export default ResetPwd;
