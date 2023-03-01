@@ -14,10 +14,11 @@ const SignUpForm = (props) => {
     onSubmit: (values) => {
       const { password, confirmPassword } = values;
       setError(null);
-      if (password === confirmPassword) {
-        signUp(values);
+      if (password !== confirmPassword) {
+        setError("Passwords don't match");
+        return;
       }
-      setError("Passwords don't match");
+      signUp(values);
     },
     validationSchema: Yup.object(validationSchema()),
     validateOnChange: false,

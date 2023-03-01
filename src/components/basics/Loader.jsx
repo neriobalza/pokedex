@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     left: 0,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "rgba(0,0,0,.5)",
+    backgroundColor: "rgba(255,255,255,.75)",
   },
 });
 

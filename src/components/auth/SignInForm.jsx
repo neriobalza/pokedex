@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View } from "react-native";
 import { Button, Input, Text, TextButton } from "@components/basics";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useAuth } from "@hooks";
 
 const SignInForm = (props) => {
   const { signIn } = props;
   const navigation = useNavigation();
+  const user = useAuth();
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -17,6 +19,10 @@ const SignInForm = (props) => {
     validationSchema: Yup.object(validationSchema()),
     validateOnChange: false,
   });
+
+  useEffect(() => {
+    if (user) formik.resetForm();
+  }, [user]);
 
   return (
     <View>

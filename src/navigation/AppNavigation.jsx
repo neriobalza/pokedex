@@ -1,6 +1,5 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, Button } from "react-native";
 import {
   SignIn,
   SignUp,
@@ -22,10 +21,9 @@ const AppNavigation = () => {
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="ResetPwd" component={ResetPwd} />
       <Stack.Screen name="Pokedex" component={Pokedex} />
-      {/* 
       <Stack.Screen name="Pokemon" component={Pokemon} />
       <Stack.Screen name="Team" component={Team} />
-      <Stack.Screen name="Account" component={Account} /> */}
+      <Stack.Screen name="Account" component={Account} />
     </Stack.Navigator>
   );
 };
