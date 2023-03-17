@@ -1,25 +1,22 @@
 import React from "react";
 import { Text } from "react-native";
-import { useTheme } from "@hooks";
+import useTheme from "@hooks/useTheme";
 
 const Title = (props) => {
-  const { children, size, weight, align, margin } = props;
-  const { theme } = useTheme();
+  const { children, size, weight, align, margin, color } = props;
+  const theme = useTheme();
 
   const titleStyles = {
-    fontSize: theme.titleSizes[size],
+    fontSize: theme.fontSize.title[size],
     fontFamily: "Sofia" + weight,
     textAlign: align,
     marginBottom: theme.spacing[margin],
-    lineHeight: theme.titleSizes[size] + 4,
-    height: theme.titleSizes[size],
+    lineHeight: theme.fontSize.title[size] + 4,
+    height: theme.fontSize.title[size],
+    color: theme.colors.text,
   };
 
-  return (
-    <>
-      <Text style={titleStyles}>{children}</Text>
-    </>
-  );
+  return <Text style={titleStyles}>{children}</Text>;
 };
 
 Title.defaultProps = {

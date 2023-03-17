@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   title: {
-    fontSize: 40,
-    fontWeight: "bold",
+    fontSize: 48,
     color: "#161616",
+    fontFamily: "SofiaBold",
   },
 
   image: {

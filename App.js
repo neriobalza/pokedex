@@ -1,8 +1,8 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { AppNavigation } from "@navigation";
-import { AuthProvider, ThemeProvider } from "@context";
+import AppNavigation from "@navigation/AppNavigation";
+import AppProviders from "@context/Providers";
 
 const App = () => {
   const [fonstLoaded] = useFonts({
@@ -17,11 +17,9 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <ThemeProvider>
-        <AuthProvider>
-          <AppNavigation />
-        </AuthProvider>
-      </ThemeProvider>
+      <AppProviders>
+        <AppNavigation />
+      </AppProviders>
     </NavigationContainer>
   );
 };

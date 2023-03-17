@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import Text from "./Text";
 
 const TextButton = (props) => {
@@ -13,7 +13,5 @@ const TextButton = (props) => {
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default TextButton;

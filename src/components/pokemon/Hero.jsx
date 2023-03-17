@@ -1,18 +1,21 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
-import { Navbar } from "@components";
+import { StyleSheet, View, Image } from "react-native";
+import { Title, Text } from "@components";
 import Pokeball from "@assets/images/pokeball-white.png";
+import { upperCase } from "lodash";
 
 const Hero = (props) => {
-  const { name, image, id, navigation } = props;
+  const { name, image, id } = props;
 
   return (
     <View style={styles.container}>
-      <Navbar navigation={navigation} />
-
       <View style={styles.display}>
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.id}>#{`${id}`.padStart(3, 0)}</Text>
+        <Title align="left" size="m" color="#fff" weight="SemiBold">
+          {upperCase(name)}
+        </Title>
+        <Text size="l" color="#fff">
+          #{`${id}`.padStart(3, 0)}
+        </Text>
       </View>
 
       <View style={styles.imageContainer}>
@@ -27,16 +30,7 @@ const styles = StyleSheet.create({
   container: {},
   display: {
     paddingHorizontal: 20,
-    marginBottom: 75,
-  },
-  name: {
-    fontSize: 32,
-    textTransform: "uppercase",
-    color: "#fff",
-  },
-  id: {
-    fontSize: 24,
-    color: "#fff",
+    marginBottom: 60,
   },
   imageContainer: {
     display: "flex",
@@ -54,9 +48,9 @@ const styles = StyleSheet.create({
   pokemonImg: {
     width: 210,
     height: 210,
+    zIndex: 5,
     position: "absolute",
     bottom: -30,
-    zIndex: 5,
   },
 });
 

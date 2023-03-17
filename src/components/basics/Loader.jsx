@@ -1,27 +1,19 @@
 import React from "react";
-import { StyleSheet, View, ActivityIndicator } from "react-native";
+import { View, ActivityIndicator } from "react-native";
+import useTheme from "@hooks/useTheme";
 
-const Loader = (props) => {
-  const {} = props;
+const Loader = () => {
+  const theme = useTheme();
+
+  const containerStyles = {
+    padding: theme.spacing.xl,
+  };
 
   return (
-    <View style={styles.container}>
+    <View style={containerStyles}>
       <ActivityIndicator size="large" />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "rgba(255,255,255,.75)",
-  },
-});
 
 export default Loader;

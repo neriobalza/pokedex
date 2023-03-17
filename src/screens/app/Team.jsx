@@ -7,20 +7,17 @@ const Team = (props) => {
 
   return (
     <Screen>
-      <View style={styles.wrapper}>
-        <Navbar
-          navigation={navigation}
-          title="Team"
-          icon="person-circle-outline"
-          navigateTo="Account"
-        />
+      <View style={styles.container}>
+        <Navbar title="Team" icon="person-circle-outline" />
       </View>
     </Screen>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapper: {},
+  container: {
+    flex: 1,
+  },
   title: {
     fontSize: 40,
     fontFamily: "SofiaMedium",

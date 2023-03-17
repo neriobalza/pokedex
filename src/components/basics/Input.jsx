@@ -1,9 +1,24 @@
 import React from "react";
-import { StyleSheet, View, TextInput } from "react-native";
+import { View, TextInput } from "react-native";
 import Text from "./Text";
+import useTheme from "@hooks/useTheme";
 
 const Input = (props) => {
   const { label, placeholder, value, onChange, password } = props;
+  const theme = useTheme();
+
+  const inputStyles = {
+    height: 50,
+    borderWidth: 2,
+    justifyContent: "center",
+    fontFamily: "SofiaMedium",
+    paddingHorizontal: 16,
+    fontSize: theme.fontSize.text.s,
+    borderRadius: theme.spacing.s,
+    borderColor: theme.colors.gray,
+    backgroundColor: theme.colors.background,
+    marginBottom: theme.spacing.m,
+  };
 
   return (
     <View>
@@ -14,7 +29,7 @@ const Input = (props) => {
       )}
 
       <TextInput
-        style={styles.input}
+        style={inputStyles}
         placeholder={placeholder}
         value={value}
         onChangeText={onChange}
@@ -30,20 +45,5 @@ Input.defaultProps = {
   placeholder: "...",
   password: false,
 };
-
-const styles = StyleSheet.create({
-  input: {
-    height: 50,
-    justifyContent: "center",
-    paddingHorizontal: 16,
-    fontSize: 16,
-    borderRadius: 8,
-    borderColor: "#B3B6B7",
-    borderWidth: 2,
-    backgroundColor: "#ECF0F1",
-    marginBottom: 16,
-    fontFamily: "SofiaMedium",
-  },
-});
 
 export default Input;

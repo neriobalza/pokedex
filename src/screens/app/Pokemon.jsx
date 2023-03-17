@@ -1,23 +1,28 @@
 import React from "react";
 import { ScrollView, View } from "react-native";
 import usePokemon from "@hooks/usePokemon";
-import { Screen } from "@components";
+import { Screen, Navbar } from "@components";
 import { Hero, Data } from "@components/pokemon";
 
 const Pokemon = (props) => {
-  const { navigation } = props;
+  const {} = props;
   const { id, name, background, image } = props.route.params;
   const pokemon = usePokemon(id);
 
-  const backgroundStyles = {
-    backgroundColor: background,
-  };
+  const addToFavorites = () => {};
 
   return (
     <Screen background={background} style="light-content">
-      <View style={backgroundStyles}>
+      <View style={{ backgroundColor: background }}>
         <ScrollView>
-          <Hero name={name} id={id} image={image} navigation={navigation} />
+          <Navbar
+            icon="heart-outline"
+            onPress={addToFavorites}
+            iconColor="pink"
+          />
+
+          <Hero name={name} id={id} image={image} />
+
           <Data
             pokemon={pokemon.pokemon}
             loading={pokemon.loading}

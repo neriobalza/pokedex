@@ -1,13 +1,23 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
+import useTheme from "@hooks/useTheme";
 import Text from "./Text";
 
 const Button = (props) => {
   const { title, onPress } = props;
+  const theme = useTheme();
+
+  const buttonStyles = {
+    height: 50,
+    justifyContent: "center",
+    marginBottom: theme.spacing.m,
+    borderRadius: theme.spacing.s,
+    backgroundColor: theme.colors.btnBg,
+  };
 
   return (
     <TouchableOpacity
-      style={styles.button}
+      style={buttonStyles}
       onPress={onPress}
       activeOpacity={0.75}
     >
@@ -23,15 +33,5 @@ const Button = (props) => {
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  button: {
-    height: 50,
-    justifyContent: "center",
-    marginBottom: 16,
-    borderRadius: 8,
-    backgroundColor: "#0066ff",
-  },
-});
 
 export default Button;

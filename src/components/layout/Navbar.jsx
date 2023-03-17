@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { IconButton, Title } from "@components/basics";
 
 const Navbar = (props) => {
-  const { goBack, title, icon, onPress } = props;
+  const { goBack, title, icon, onPress, iconColor } = props;
   const navigation = useNavigation();
 
   return (
@@ -25,7 +25,7 @@ const Navbar = (props) => {
         )}
       </View>
 
-      {icon && <IconButton icon={icon} onPress={onPress} />}
+      {icon && <IconButton icon={icon} onPress={onPress} color={iconColor} />}
     </View>
   );
 };

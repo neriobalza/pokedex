@@ -34,7 +34,6 @@ const SignIn = (props) => {
       .catch((err) => {
         let message = err.code;
         message = message.slice(message.indexOf("/") + 1).replaceAll("-", " ");
-
         setTimeout(() => {
           setError({
             visible: true,
