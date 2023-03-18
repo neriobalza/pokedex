@@ -6,15 +6,16 @@ import {
   Divider,
   Title,
   SignInForm,
-  Loader,
-  Modal,
+  LoaderModal,
+  MessageModal,
 } from "@components";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useAuth } from "@hooks";
+import useAuth from "@hooks/useAuth";
 import { auth } from "@database";
 
 const SignIn = (props) => {
   const { navigation } = props;
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ visible: false, message: "" });
   const user = useAuth();
@@ -65,9 +66,9 @@ const SignIn = (props) => {
         />
       </View>
 
-      {loading && <Loader />}
+      <LoaderModal visible={loading} />
 
-      <Modal
+      <MessageModal
         message={error.message}
         visible={error.visible}
         close={closeModal}

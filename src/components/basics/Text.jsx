@@ -3,7 +3,7 @@ import { Text as TextRn } from "react-native";
 import useTheme from "@hooks/useTheme";
 
 const Text = (props) => {
-  const { children, size, weight, align, margin, color } = props;
+  const { children, size, weight, align, margin, white } = props;
   const theme = useTheme();
 
   const textStyles = {
@@ -11,7 +11,7 @@ const Text = (props) => {
     fontFamily: "Sofia" + weight,
     textAlign: align,
     marginBottom: theme.spacing[margin],
-    color: theme.colors.text,
+    color: !white ? theme.colors.text : theme.colors.white,
   };
 
   return <TextRn style={textStyles}>{children}</TextRn>;
@@ -22,6 +22,7 @@ Text.defaultProps = {
   weight: "",
   align: "left",
   margin: "m",
+  white: false,
 };
 
 export default Text;

@@ -8,9 +8,11 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import icon from "@assets/images/pokeball.png";
+import useTheme from "@hooks/useTheme";
 
-const Header = () => {
+const PokedexHeader = () => {
   const navigation = useNavigation();
+  const theme = useTheme();
 
   const goToTeam = () => {
     navigation.navigate("Team");
@@ -29,12 +31,12 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   conainer: {
-    // backgroundColor: "rgba(239,239,239, .5)",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     margin: 5,
+    height: 60,
   },
   title: {
     fontSize: 48,
@@ -48,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Header;
+export default PokedexHeader;

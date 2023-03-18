@@ -4,7 +4,7 @@ import { View } from "react-native";
 import { Button, Input, Text, TextButton } from "@components/basics";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useAuth } from "@hooks";
+import useAuth from "@hooks/useAuth";
 
 const SignInForm = (props) => {
   const { signIn } = props;

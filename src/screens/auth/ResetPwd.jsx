@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { Title, Text, Button, Input, Screen, Navbar } from "@components";
+import { Title, Text, Button, Input, Screen, Header } from "@components";
 
 const ResetPwd = () => {
   return (
     <Screen>
-      <Navbar />
+      <Header />
 
       <View style={styles.container}>
         <View style={styles.form}>

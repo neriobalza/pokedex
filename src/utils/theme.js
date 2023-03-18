@@ -4,7 +4,7 @@ const palette = {
   darkgray: "#333333",
   gray: "#B3B6B7",
   fadedBlack: "rgba(0,0,0, 0.15)",
-  fadedWhite: "rgba(255,255,255, 0.75)",
+  fadedWhite: "rgba(255,255,255, 0.25)",
   blue: "#0066ff",
   red: "#ED1B24",
   purple: "#484b6a",
@@ -22,6 +22,7 @@ export default theme = {
     gray: palette.gray,
     fadedBlack: palette.fadedBlack,
     fadedWhite: palette.fadedWhite,
+    white: palette.white,
   },
   spacing: {
     none: 0,

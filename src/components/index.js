@@ -12,7 +12,15 @@ export { default as Title } from "./basics/Title";
 
 // Layout
 export { default as Screen } from "./layout/Screen";
-export { default as Navbar } from "./layout/Navbar";
+export { default as Header } from "./layout/Header";
+
+// Containers
+export { default as PokedexHeader } from "./containers/PokedexHeader";
+export { default as PokemonHero } from "./containers/PokemonHero";
+export { default as PokemonData } from "./containers/PokemonData";
+
+// Templates
+export { default as PokemonCard } from "./templates/PokemonCard";
 
 // Authentication
 export { default as SignInForm } from "./auth/SignInForm";

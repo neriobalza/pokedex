@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { Screen, Navbar } from "@components";
+import { Screen, Header } from "@components";
 
 const Team = (props) => {
   const { navigation } = props;
@@ -8,7 +8,7 @@ const Team = (props) => {
   return (
     <Screen>
       <View style={styles.container}>
-        <Navbar title="Team" icon="person-circle-outline" />
+        <Header title="Team" icon="person-circle-outline" />
       </View>
     </Screen>
   );

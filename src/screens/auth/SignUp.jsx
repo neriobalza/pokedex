@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Keyboard } from "react-native";
-import { Screen, Title, SignUpForm, Loader, Navbar, Modal } from "@components";
+import {
+  Screen,
+  Title,
+  SignUpForm,
+  LoaderModal,
+  Header,
+  MessageModal,
+} from "@components";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@database";
 
@@ -35,7 +42,7 @@ const SignUp = (props) => {
 
   return (
     <Screen>
-      <Navbar />
+      <Header />
 
       <View style={styles.container}>
         <Title>Sign Up</Title>
@@ -43,9 +50,8 @@ const SignUp = (props) => {
         <SignUpForm signUp={signUp} />
       </View>
 
-      {loading && <Loader />}
-
-      <Modal
+      <LoaderModal visible={loading} />
+      <MessageModal
         message={error.message}
         visible={error.visible}
         close={closeModal}

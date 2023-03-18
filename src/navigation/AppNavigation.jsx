@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
   SignIn,
@@ -18,13 +17,13 @@ const AppNavigation = () => {
     <Stack.Navigator
       screenOptions={{ headerShown: false, animation: "fade_from_bottom" }}
     >
-      <Stack.Screen name="SignIn" component={SignIn} />
-      {/* <Stack.Screen name="SignUp" component={SignUp} />
-      <Stack.Screen name="ResetPwd" component={ResetPwd} />
       <Stack.Screen name="Pokedex" component={Pokedex} />
+      <Stack.Screen name="SignIn" component={SignIn} />
+      <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="ResetPwd" component={ResetPwd} />
       <Stack.Screen name="Pokemon" component={Pokemon} />
       <Stack.Screen name="Team" component={Team} />
-      <Stack.Screen name="Account" component={Account} /> */}
+      <Stack.Screen name="Account" component={Account} />
     </Stack.Navigator>
   );
 };
