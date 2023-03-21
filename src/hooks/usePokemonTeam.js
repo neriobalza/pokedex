@@ -5,8 +5,7 @@ import { API_HOST } from "@utils/constants";
 
 const usePokemonTeam = () => {
   const [pokemons, setPokemons] = useState([]);
-  const [newIdList, setNewIdList] = useState([]);
-  const [refIdList, setRefIdList] = useState([]);
+  const [check, setCheck] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -26,8 +25,6 @@ const usePokemonTeam = () => {
           image: pokeData.sprites.other["official-artwork"].front_default,
         });
       }
-      console.log("terminando");
-      setRefIdList(ids);
       setPokemons(results);
     } catch (error) {
       setError(error.message);
@@ -35,33 +32,24 @@ const usePokemonTeam = () => {
     setLoading(false);
   };
 
-  const updatePokemons = () => {
-    console.log("update");
-    const newPokeList = pokemons.filter((poke) => newIdList.includes(poke.id));
-    console.log(newPokeList);
-
+  const updatePokemons = async () => {
+    if (pokemons.length === 0) return;
+    const ids = await getFavorites();
+    const newPokeList = pokemons.filter((poke) => ids.includes(poke.id));
     setPokemons(newPokeList);
   };
 
   useEffect(() => {
-    console.log("primer fetch");
     fetchPokemon();
   }, []);
 
   useEffect(() => {
-    if (!refIdList.toString()) return;
-    console.log("validating list");
-    if (newIdList.toString() === refIdList.toString()) return;
-    setRefIdList(newIdList);
     updatePokemons();
-  }, [newIdList]);
+  }, [check]);
 
   useFocusEffect(
     useCallback(() => {
-      (async () => {
-        const response = await getFavorites();
-        setNewIdList(response);
-      })();
+      setCheck((check) => !check);
     }, [])
   );
 
