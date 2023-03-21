@@ -12,6 +12,7 @@ const Team = (props) => {
   const listStyles = {
     paddingHorizontal: theme.spacing.s,
     gap: theme.spacing.s,
+    paddingTop: theme.spacing.s,
   };
 
   const goToAccount = () => {
@@ -21,23 +22,33 @@ const Team = (props) => {
   return (
     <Screen>
       <View style={styles.container}>
-        <Header
-          title="Team"
-          icon="person-circle-outline"
-          onPress={goToAccount}
-        />
+        <View>
+          <Header
+            title="Team"
+            icon="person-circle-outline"
+            onPress={goToAccount}
+          />
 
-        <FlatList
-          data={pokemons}
-          numColumns={2}
-          showsVerticalScrollIndicator={true}
-          contentContainerStyle={listStyles}
-          ListFooterComponent={loading && <Loader />}
-          keyExtractor={(item) => String(item.id)}
-          renderItem={({ item, index }) => (
-            <PokemonCard pokemon={item} navigation={navigation} i={index} />
+          <FlatList
+            data={pokemons}
+            numColumns={2}
+            showsVerticalScrollIndicator={true}
+            contentContainerStyle={listStyles}
+            ListFooterComponent={loading && <Loader />}
+            keyExtractor={(item) => String(item.id)}
+            renderItem={({ item, index }) => (
+              <PokemonCard pokemon={item} navigation={navigation} i={index} />
+            )}
+          />
+        </View>
+
+        <View>
+          {pokemons.length > 0 && (
+            <Text align="center" size="s" weight="SemiBold">
+              ({pokemons.length} - 6)
+            </Text>
           )}
-        />
+        </View>
       </View>
     </Screen>
   );
@@ -46,6 +57,7 @@ const Team = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "space-between",
   },
   title: {
     fontSize: 40,
