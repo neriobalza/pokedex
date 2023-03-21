@@ -49,7 +49,7 @@ const PokemonCard = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1 / 2,
     overflow: "hidden",
     elevation: 4,
   },

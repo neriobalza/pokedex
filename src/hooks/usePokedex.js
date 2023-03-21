@@ -16,7 +16,6 @@ const usePokedex = () => {
     if (loading) return;
     setLoading(true);
     let newPokemons = [];
-
     try {
       const response = await fetch(url);
       const data = await response.json();
