@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { API_HOST } from "@utils/constants";
 
 const usePokemon = (id) => {
-  const [pokemon, setPokemon] = useState(null);
+  const [pokemon, setPokemon] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const baseUrl = API_HOST + "pokemon/";

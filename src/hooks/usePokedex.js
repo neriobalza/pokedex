@@ -14,7 +14,6 @@ const usePokedex = () => {
 
   const fetchPokemons = async (url) => {
     if (loading) return;
-    console.log("cargando");
     setLoading(true);
     let newPokemons = [];
 

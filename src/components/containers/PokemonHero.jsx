@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Image } from "react-native";
 import { upperCase } from "lodash";
-import { Title, Text } from "@components";
+import { Title, Text } from "@components/basics";
 import useTheme from "@hooks/useTheme";
 import Pokeball from "@assets/images/pokeball-white.png";
 
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     width: 250,
     height: 250,
     position: "absolute",
-    bottom: -50,
+    bottom: -20,
     right: -50,
     opacity: 0.3,
   },

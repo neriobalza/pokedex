@@ -1,14 +1,26 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import { Screen, Header } from "@components";
+import { StyleSheet, View, FlatList } from "react-native";
+import { Screen, Header, Text } from "@components";
+import usePokemonTeam from "@hooks/usePokemonTeam";
 
 const Team = (props) => {
   const { navigation } = props;
+  const { pokemons, loading } = usePokemonTeam();
+
+  const goToAccount = () => {
+    navigation.navigate("Account");
+  };
 
   return (
     <Screen>
       <View style={styles.container}>
-        <Header title="Team" icon="person-circle-outline" />
+        <Header
+          title="Team"
+          icon="person-circle-outline"
+          onPress={goToAccount}
+        />
+
+        {/* <FlatList data={pokemons} /> */}
       </View>
     </Screen>
   );

@@ -1,16 +1,16 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Screen, Navbar } from "@components";
+import { StyleSheet, View } from "react-native";
+import { Screen, Header } from "@components";
 import useAuth from "@hooks/useAuth";
 
 const Account = (props) => {
   const { navigation } = props;
-  const { user } = useAuth();
+  const user = useAuth();
 
   return (
     <Screen>
       <View style={styles.container}>
-        <Navbar navigation={navigation} title="Account" />
+        <Header navigation={navigation} title="Account" />
       </View>
     </Screen>
   );

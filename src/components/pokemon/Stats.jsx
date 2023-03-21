@@ -1,11 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { capitalize } from "lodash";
+import { Text } from "@components/basics";
+import useTheme from "@hooks/useTheme";
 
 const Stats = (props) => {
-  const { stats } = props;
+  const { stats = [] } = props;
+  const theme = useTheme();
 
   const barStyles = (num) => {
-    const color = num > 49 ? "#00ac17" : "#ff3e3e";
+    const color = num > 49 ? theme.colors.green : theme.colors.red;
     return {
       backgroundColor: color,
       width: `${num}%`,
@@ -14,28 +18,27 @@ const Stats = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Stats</Text>
+      <Text size="m" margin="none" weight="SemiBold">
+        Stats
+      </Text>
 
-      <View>
-        {stats.map((elm) => {
-          return (
-            <View key={elm.stat.name} style={styles.stat}>
-              <View style={styles.statNameContainer}>
-                <Text style={styles.statName}>{elm.stat.name}</Text>
-              </View>
+      <View style={styles.statsList}>
+        {stats.map((elm, i) => (
+          <View key={i} style={styles.stat}>
+            <View style={styles.statName}>
+              <Text margin="none" weight="Medium">
+                {capitalize(elm.stat.name)}
+              </Text>
+              <Text margin="none">{elm.base_stat}</Text>
+            </View>
 
-              <View style={styles.statDataContainer}>
-                <Text style={styles.statNumber}>{elm.base_stat}</Text>
-
-                <View style={styles.statBgBar}>
-                  <View
-                    style={[styles.statBar, barStyles(elm.base_stat)]}
-                  ></View>
-                </View>
+            <View style={styles.statData}>
+              <View style={styles.statBgBar}>
+                <View style={[styles.statBar, barStyles(elm.base_stat)]}></View>
               </View>
             </View>
-          );
-        })}
+          </View>
+        ))}
       </View>
     </View>
   );
@@ -43,41 +46,32 @@ const Stats = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: 16,
+    gap: 8,
   },
-  title: {
-    fontWeight: "bold",
-    fontSize: 16,
-    marginBottom: 8,
-  },
+  statsList: { gap: 8 },
 
   stat: {
     flexDirection: "row",
-    marginBottom: 10,
-  },
-
-  statNameContainer: {
-    width: "30%",
+    alignItems: "center",
+    gap: 8,
   },
 
   statName: {
-    fontSize: 14,
-    textTransform: "capitalize",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 
-  statDataContainer: {
-    width: "70%",
+  statData: {
+    flex: 1,
     flexDirection: "row",
     alignItems: "center",
-  },
-
-  statNumber: {
-    width: "12%",
-    textAlign: "center",
+    gap: 8,
   },
 
   statBgBar: {
-    width: "88%",
+    flex: 1,
     backgroundColor: "#ddd",
     height: 5,
     borderRadius: 5,

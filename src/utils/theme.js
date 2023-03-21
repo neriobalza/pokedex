@@ -8,6 +8,7 @@ const palette = {
   blue: "#0066ff",
   red: "#ED1B24",
   purple: "#484b6a",
+  green: "#17cf45",
 };
 
 export default theme = {
@@ -23,6 +24,7 @@ export default theme = {
     fadedBlack: palette.fadedBlack,
     fadedWhite: palette.fadedWhite,
     white: palette.white,
+    green: palette.green,
   },
   spacing: {
     none: 0,

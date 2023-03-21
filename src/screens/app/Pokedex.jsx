@@ -26,8 +26,6 @@ const Pokedex = (props) => {
     };
   }, []);
 
-  console.log(loading);
-
   return (
     <Screen>
       <FlatList
