@@ -21,6 +21,7 @@ export { default as PokemonData } from "./containers/PokemonData";
 
 // Templates
 export { default as PokemonCard } from "./templates/PokemonCard";
+export { default as UpdateNameForm } from "./templates/UpdateNameForm";
 
 // Authentication
 export { default as SignInForm } from "./auth/SignInForm";

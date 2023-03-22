@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { signOut, updateProfile } from "firebase/auth";
-import { Screen, Header, Text, Button, LoaderModal, Input } from "@components";
+import {
+  Screen,
+  Header,
+  Text,
+  Button,
+  LoaderModal,
+  Input,
+  Divider,
+  UpdateNameForm,
+} from "@components";
 import useAuth from "@hooks/useAuth";
 import { auth } from "@database";
 
 const Account = (props) => {
   const { navigation } = props;
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const user = useAuth();
 
   const signOutUser = async () => {
@@ -19,22 +29,40 @@ const Account = (props) => {
     navigation.reset({ index: 0, routes: [{ name: "SignIn" }] });
   };
 
-  const updateDisplayName = async () => {};
+  const updateDisplayName = async (name) => {
+    setLoading(true);
+    try {
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+      });
+    } catch (error) {}
+    setLoading(false);
+  };
 
   return (
     <Screen>
       <View style={styles.container}>
+        <Header navigation={navigation} title="Account" />
         <View>
-          <Header navigation={navigation} title="Account" />
           {user && (
-            <View style={styles.top}>
+            <View style={styles.main}>
               <Text size="m" weight="SemiBold">
                 Email
               </Text>
               <Text>{user.email}</Text>
 
-              <Input label="User Name" />
-              <Button title="Save" />
+              <Divider />
+              {user.displayName ? (
+                <>
+                  <Text size="m" weight="SemiBold">
+                    Name
+                  </Text>
+                  <Text>{user.displayName}</Text>
+                </>
+              ) : (
+                <UpdateNameForm update={updateDisplayName} />
+              )}
+              <Divider />
             </View>
           )}
         </View>
@@ -51,10 +79,11 @@ const Account = (props) => {
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: "space-between" },
-  top: {
-    padding: 16,
+  main: {
+    paddingHorizontal: 16,
+    paddingBottom: 60,
   },
-  bottom: { padding: 16 },
+  bottom: { padding: 16, paddingBottom: 0 },
 });
 
 export default Account;

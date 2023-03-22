@@ -42,7 +42,7 @@ const SignInForm = (props) => {
       />
 
       <TextButton
-        color="#0066ff"
+        color="blue"
         weight="Medium"
         onPress={() => {
           navigation.navigate("ResetPwd");
@@ -55,13 +55,13 @@ const SignInForm = (props) => {
 
       <View>
         {formik.errors.email && (
-          <Text align="center" color="#f00" weight="Medium">
+          <Text align="center" color="danger" weight="Medium">
             {formik.errors.email}
           </Text>
         )}
 
         {formik.errors.password && (
-          <Text align="center" color="#f00" weight="Medium">
+          <Text align="center" color="danger" weight="Medium">
             {formik.errors.password}
           </Text>
         )}
