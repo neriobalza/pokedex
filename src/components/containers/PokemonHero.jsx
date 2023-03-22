@@ -15,13 +15,13 @@ const PokemonHero = (props) => {
         <Title
           align="left"
           size="m"
-          white={true}
+          color="white"
           weight="SemiBold"
           margin="none"
         >
           {upperCase(name)}
         </Title>
-        <Text size="l" white={true}>
+        <Text size="l" color="white">
           #{`${id}`.padStart(3, 0)}
         </Text>
       </View>

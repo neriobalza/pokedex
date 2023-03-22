@@ -35,10 +35,10 @@ const PokemonCard = (props) => {
     <View style={containerStyles}>
       <TouchableWithoutFeedback onPress={goToPokemon}>
         <View style={styles.height}>
-          <Text margin="none" white={true} weight="Medium">
+          <Text margin="none" color="white" weight="Medium">
             {upperCase(pokemon.name)}
           </Text>
-          <Text white={true}>#{`${pokemon.id}`.padStart(3, 0)}</Text>
+          <Text color="white">#{`${pokemon.id}`.padStart(3, 0)}</Text>
           <Image source={pokeball} style={styles.pokeball} />
           <Image source={{ uri: pokemon.image }} style={styles.pokemonImg} />
         </View>

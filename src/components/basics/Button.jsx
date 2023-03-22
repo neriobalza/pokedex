@@ -4,7 +4,7 @@ import useTheme from "@hooks/useTheme";
 import Text from "./Text";
 
 const Button = (props) => {
-  const { title, onPress } = props;
+  const { title, onPress, color } = props;
   const theme = useTheme();
 
   const buttonStyles = {
@@ -12,7 +12,7 @@ const Button = (props) => {
     justifyContent: "center",
     marginBottom: theme.spacing.m,
     borderRadius: theme.spacing.s,
-    backgroundColor: theme.colors.btnBg,
+    backgroundColor: color ? theme.colors[color] : theme.colors.btnBg,
   };
 
   return (
@@ -26,7 +26,7 @@ const Button = (props) => {
         size="m"
         weight="SemiBold"
         align="center"
-        color="#fefefe"
+        color="white"
       >
         {title}
       </Text>

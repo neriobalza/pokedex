@@ -3,9 +3,11 @@ import { FlatList } from "react-native";
 import { Screen, PokedexHeader, Loader, PokemonCard } from "@components";
 import usePokedex from "@hooks/usePokedex";
 import useTheme from "@hooks/useTheme";
+import useAuth from "@hooks/useAuth";
 
 const Pokedex = (props) => {
   const { navigation } = props;
+  const user = useAuth();
   const theme = useTheme();
   const { pokemons, loading, fetchMorePokemons } = usePokedex();
 
@@ -16,12 +18,15 @@ const Pokedex = (props) => {
 
   useEffect(() => {
     navigation.addListener("beforeRemove", (e) => {
-      e.preventDefault();
+      if (e.data.action.type === "GO_BACK") {
+        e.preventDefault();
+      }
     });
-
     return () => {
       navigation.removeListener("beforeRemove", (e) => {
-        e.preventDefault();
+        if (e.data.action.type === "GO_BACK") {
+          e.preventDefault();
+        }
       });
     };
   }, []);

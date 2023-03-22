@@ -30,18 +30,18 @@ const SignIn = (props) => {
     const { email, password } = values;
     Keyboard.dismiss();
     setLoading(true);
-    await signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {})
-      .catch((err) => {
-        let message = err.code;
-        message = message.slice(message.indexOf("/") + 1).replaceAll("-", " ");
-        setTimeout(() => {
-          setError({
-            visible: true,
-            message: message,
-          });
-        }, 50);
-      });
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      let message = error.code;
+      message = message.slice(message.indexOf("/") + 1).replaceAll("-", " ");
+      setTimeout(() => {
+        setError({
+          visible: true,
+          message: message,
+        });
+      }, 50);
+    }
     setLoading(false);
   };
 

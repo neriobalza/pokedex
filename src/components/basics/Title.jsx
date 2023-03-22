@@ -3,7 +3,7 @@ import { Text } from "react-native";
 import useTheme from "@hooks/useTheme";
 
 const Title = (props) => {
-  const { children, size, weight, align, margin, white } = props;
+  const { children, size, weight, align, margin, color } = props;
   const theme = useTheme();
 
   const titleStyles = {
@@ -13,7 +13,7 @@ const Title = (props) => {
     marginBottom: theme.spacing[margin],
     lineHeight: theme.fontSize.title[size] + 4,
     height: theme.fontSize.title[size],
-    color: !white ? theme.colors.text : theme.colors.white,
+    color: color ? theme.colors[color] : theme.colors.text,
   };
 
   return <Text style={titleStyles}>{children}</Text>;
