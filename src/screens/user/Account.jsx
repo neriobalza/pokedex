@@ -35,7 +35,9 @@ const Account = (props) => {
       await updateProfile(auth.currentUser, {
         displayName: name,
       });
-    } catch (error) {}
+    } catch (error) {
+      setError(error.message);
+    }
     setLoading(false);
   };
 

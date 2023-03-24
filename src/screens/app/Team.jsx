@@ -43,11 +43,9 @@ const Team = (props) => {
         </View>
 
         <View>
-          {pokemons.length > 0 && (
-            <Text align="center" size="s" weight="SemiBold">
-              ({pokemons.length} - 6)
-            </Text>
-          )}
+          <Text align="center" size="s" weight="SemiBold">
+            ({pokemons.length} - 6)
+          </Text>
         </View>
       </View>
     </Screen>

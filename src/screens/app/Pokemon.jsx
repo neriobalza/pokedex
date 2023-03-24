@@ -1,43 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { ScrollView, View } from "react-native";
 import { Screen, Header, PokemonHero, PokemonData } from "@components";
 import useTheme from "@hooks/useTheme";
-import { addFavorite, deleteFavorite, isFavorite } from "@api/favorite";
+import { addFavorite, deleteFavorite } from "@api/favorite";
+import useFavorites from "@hooks/useFavorites";
 
 const Pokemon = (props) => {
   const { id, name, background, image } = props.route.params;
-  const [isPokemonFav, setIsPokemonFav] = useState(false);
-  const [reload, setReload] = useState(false);
+  const { favorites, setFavorites } = useFavorites();
   const theme = useTheme();
 
   const handleAddFavorite = async () => {
-    await addFavorite(id);
-    setReload(!reload);
+    const response = await addFavorite(favorites, id);
+    setFavorites(response);
   };
 
   const handleDeleteFavorite = async () => {
-    await deleteFavorite(id);
-    setReload(!reload);
+    const response = await deleteFavorite(favorites, id);
+    setFavorites(response);
   };
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await isFavorite(id);
-        setIsPokemonFav(response);
-      } catch (error) {
-        setIsPokemonFav(false);
-      }
-    })();
-  }, [reload]);
 
   return (
     <Screen background={background} style="light-content">
       <ScrollView style={{ backgroundColor: theme.colors.background }}>
         <View style={{ backgroundColor: background }}>
           <Header
-            icon={isPokemonFav ? "heart" : "heart-outline"}
-            onPress={isPokemonFav ? handleDeleteFavorite : handleAddFavorite}
+            icon={favorites.includes(id) ? "heart" : "heart-outline"}
+            onPress={
+              favorites.includes(id) ? handleDeleteFavorite : handleAddFavorite
+            }
           />
           <PokemonHero name={name} id={id} image={image} />
         </View>

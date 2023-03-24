@@ -1,16 +1,31 @@
 import { useState, useEffect } from "react";
 import { API_HOST } from "@utils/constants";
+import useFavorites from "./useFavorites";
+import { getFavorites } from "@api/favorite";
 
 const usePokedex = () => {
   const [pokemons, setPokemons] = useState([]);
   const [nextPage, setNextPage] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { setFavorites } = useFavorites();
   const baseUrl = API_HOST + "pokemon?offset=0&limit=20";
 
   useEffect(() => {
-    fetchPokemons(baseUrl);
+    (async () => {
+      await fetchFavorites();
+      await fetchPokemons(baseUrl);
+    })();
   }, []);
+
+  const fetchFavorites = async () => {
+    try {
+      const result = await getFavorites();
+      setFavorites(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const fetchPokemons = async (url) => {
     if (loading) return;

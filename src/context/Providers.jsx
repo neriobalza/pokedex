@@ -1,13 +1,16 @@
 import React from "react";
 import { AuthProvider } from "./AuthContext";
 import { ThemeProvider } from "./ThemeContext";
+import { FavoriteProvider } from "./FavoritesContext";
 
 const Providers = ({ children }) => {
   return (
     <>
       <ThemeProvider>
         <AuthProvider>
-          <>{children}</>
+          <FavoriteProvider>
+            <>{children}</>
+          </FavoriteProvider>
         </AuthProvider>
       </ThemeProvider>
     </>
