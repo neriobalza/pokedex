@@ -7,7 +7,6 @@ import {
   Text,
   Button,
   LoaderModal,
-  Input,
   Divider,
   UpdateNameForm,
 } from "@components";

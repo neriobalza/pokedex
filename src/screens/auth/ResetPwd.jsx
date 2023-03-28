@@ -1,8 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { Title, Text, Button, Input, Screen, Header } from "@components";
+import {
+  Title,
+  Text,
+  Screen,
+  Header,
+  ResetPwdForm,
+  MessageModal,
+  LoaderModal,
+} from "@components";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { auth } from "@database";
 
 const ResetPwd = () => {
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const sendEmail = async (email) => {
+    setLoading(true);
+    try {
+      await sendPasswordResetEmail(auth, email);
+      setMessage("Email sent");
+    } catch (error) {
+      let message = error.code;
+      message = message.slice(message.indexOf("/") + 1).replaceAll("-", " ");
+      setMessage(message);
+    }
+    setLoading(false);
+  };
+
+  const closeModal = () => {
+    setMessage("");
+  };
+
   return (
     <Screen>
       <Header />
@@ -16,11 +46,16 @@ const ResetPwd = () => {
             with instruccions to reset your password.
           </Text>
 
-          <Input label="Email:" placeholder="Your email.." />
-
-          <Button title="Submit" />
+          <ResetPwdForm sendEmail={sendEmail} />
         </View>
       </View>
+
+      <LoaderModal visible={loading} />
+      <MessageModal
+        visible={Boolean(message)}
+        message={message}
+        close={closeModal}
+      />
     </Screen>
   );
 };
