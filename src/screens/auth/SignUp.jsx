@@ -20,20 +20,20 @@ const SignUp = (props) => {
     const { email, password } = values;
     Keyboard.dismiss();
     setLoading(true);
-    await createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        navigation.goBack();
-      })
-      .catch((err) => {
-        let message = err.code;
-        message = message.slice(message.indexOf("/") + 1).replaceAll("-", " ");
 
-        setError({
-          visible: true,
-          message: message,
-        });
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      setLoading(false);
+      navigation.goBack();
+    } catch (error) {
+      setLoading(false);
+      let message = err.code;
+      message = message.slice(message.indexOf("/") + 1).replaceAll("-", " ");
+      setError({
+        visible: true,
+        message: message,
       });
-    setLoading(false);
+    }
   };
 
   const closeModal = () => {

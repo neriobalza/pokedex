@@ -44,7 +44,7 @@ const initialValues = () => {
 
 const validationSchema = () => {
   return {
-    name: Yup.string().min(6).required("User is a required field"),
+    name: Yup.string().required("User is a required field"),
   };
 };
 
